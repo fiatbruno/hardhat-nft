@@ -1,8 +1,8 @@
 {
-  "name": "hardhat-starter-kit",
+  "name": "hardhat-nft",
   "license": "MIT",
-  "version": "2.0.0",
-  "description": "A repo for boilerplate code for testing, deploying, and shipping chainlink solidity code.",
+  "version": "1.0.0",
+  "description": "Working with non-fungible tokens",
   "scripts": {
     "compile": "hardhat compile",
     "test": "hardhat test test/unit/*.spec.js",
@@ -26,7 +26,7 @@
     "@typechain/ethers-v5": "^10.1.0",
     "@typechain/hardhat": "^6.1.3",
     "chai": "^4.3.6",
-    "ethers": "^5.7.1",
+    "ethers": "^5.7.2",
     "hardhat": "^2.11.2",
     "hardhat-gas-reporter": "^1.0.9",
     "husky": "^8.0.1",
@@ -39,6 +39,7 @@
     "typechain": "^8.1.0"
   },
   "dependencies": {
+    "@aave/protocol-v2": "^1.0.1",
     "dotenv": "^16.0.3"
   },
   "lint-staged": {

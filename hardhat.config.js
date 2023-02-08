@@ -1,5 +1,6 @@
 require("@nomicfoundation/hardhat-toolbox")
 require("@nomiclabs/hardhat-ethers")
+require("hardhat-deploy")
 require("./tasks")
 require("dotenv").config()
 
@@ -85,6 +86,7 @@ module.exports = {
             //     mnemonic: MNEMONIC,
             //   },
             chainId: 5,
+            blockConfirmations: 6,
         },
         mainnet: {
             url: MAINNET_RPC_URL,
@@ -93,6 +95,7 @@ module.exports = {
             //     mnemonic: MNEMONIC,
             //   },
             chainId: 1,
+            blockConfirmations: 6,
         },
         polygon: {
             url: POLYGON_MAINNET_RPC_URL,
@@ -106,6 +109,12 @@ module.exports = {
         },
     },
     defaultNetwork: "hardhat",
+    namedAccounts: {
+        deployer: {
+            default: 0, // here this will by default take the first account as deployer
+            1: 0, // similarly on mainnet it will take the first account as deployer. Note though that depending on how hardhat network are configured, the account 0 on one network can be different than on another
+        },
+    },
     etherscan: {
         // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
         apiKey: {

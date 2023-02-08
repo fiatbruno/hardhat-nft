@@ -20,4 +20,4 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     log("---------------------------------")
 }
 
-// Look at how you did it with hardhat-defi
+module.exports.tags = ["all", "basicnft", "main"]

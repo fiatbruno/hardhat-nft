@@ -3,7 +3,7 @@ const { developmentChains, networkConfig } = require("../helper-hardhat-config")
 const { verify } = require("../utils/verify")
 const { storeImages } = require("../utils/uploadToPinata")
 
-const imagesLocation = "../images/randomNft"
+const imagesLocation = "/Users/fiat/Developer/learn-solidity/hardhat-nft/images/randomNft"
 
 module.exports = async function ({ getNamedAccounts, deployments }) {
     const { deploy, log } = deployments
@@ -28,9 +28,9 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     }
 
     log("----------------------------------------------------")
-    
+
     await storeImages(imagesLocation)
-    
+
     // const args = [
     //     vrfCoorinatorV2Address,
     //     subscriptionId,

@@ -17,12 +17,20 @@ const metadataTemplate = {
     ],
 }
 
+let tokenUris = [
+    "ipfs://QmPyKqjXXpUu94446KA1hyadwUdcZM5TdxaHXPX4eYPp3U",
+    "ipfs://Qmbypk8g9hQkM7io6VTZ5CeaGiwUypzY6NVDPVs8mHaDoD",
+    "ipfs://QmNdniiCAb8pjTzEYuDHXdH7C9h3hB6LBLAbgeKLNszYbb",
+]
+
+const FUND_AMOUNT = "1000000000000000000000"
+
 module.exports = async function ({ getNamedAccounts, deployments }) {
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
     const chainId = network.config.chainId
 
-    let vrfCoordinatorV2Address, subscriptionId, tokenUris
+    let vrfCoordinatorV2Address, subscriptionId
 
     if (process.env.UPLOAD_TO_PINATA == "true") {
         tokenUris = await handleTokenUris()
@@ -34,6 +42,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
         const tx = await vrfCoorinatorV2Mock.createSubscription()
         const txReceipt = await tx.wait(1)
         subscriptionId = txReceipt.events[0].args.subId
+        await vrfCoorinatorV2Mock.fundSubscription(subscriptionId, FUND_AMOUNT)
     } else {
         vrfCoordinatorV2Address = networkConfig[chainId].vrfCoorinator
         subscriptionId = networkConfig[chainId].subscriptionId
@@ -49,8 +58,6 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
         tokenUris,
         networkConfig[chainId].mintFee,
     ]
-    console.log(`blockConfirmations: ${network.config.blockConfirmations} \n`)
-    console.log(`chainId: ${network.config.chainId} \n`)
     const randomIpfsNft = await deploy("RandomIpfsNft", {
         from: deployer,
         args: args,

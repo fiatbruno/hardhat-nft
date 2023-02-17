@@ -11,7 +11,7 @@ async function storeImages(imagesFilePath) {
     const fullImagesPath = path.resolve(imagesFilePath)
     const files = fs.readdirSync(fullImagesPath)
     let responses = []
-    console.log("Uploading to Pinata! ✨")
+    console.log("✨ Uploading to Pinata!")
     for (fileIndex in files) {
         console.log(`Working on ${fileIndex}...`)
         const readableStreamForFile = new fs.createReadStream(

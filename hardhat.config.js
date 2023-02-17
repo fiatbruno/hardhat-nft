@@ -78,6 +78,7 @@ module.exports = {
         },
         localhost: {
             chainId: 31337,
+            blockConfirmations: 6,
         },
         goerli: {
             url: GOERLI_RPC_URL,

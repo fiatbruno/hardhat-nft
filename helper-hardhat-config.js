@@ -16,6 +16,9 @@ const networkConfig = {
         fundAmount: "1000000000000000000",
         automationUpdateInterval: "30",
         ethUsdPriceFeed: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+        gasLane: "0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15",
+        callbackGasLimit: "500000",
+        mintFee: "10000000000000000",
     },
     1: {
         name: "mainnet",
@@ -38,6 +41,7 @@ const networkConfig = {
         automationUpdateInterval: "30",
         gasLane: "0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15",
         callbackGasLimit: "500000",
+        mintFee: "10000000000000000",
         // interval: "30",
     },
     137: {

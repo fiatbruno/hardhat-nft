@@ -5,6 +5,8 @@ const { verify } = require("../utils/verify")
 module.exports = async function ({ getNamedAccounts, deployments }) {
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
+    console.log(`Account address: ${deployer}`)
+    //0xd9b908C56B13C8EB0F3F817109cb72eAf0b952ED
     log("-----------------------------------------------------------")
     const args = []
     const basicNft = await deploy("BasicNft", {

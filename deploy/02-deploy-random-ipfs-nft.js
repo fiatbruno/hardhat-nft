@@ -43,8 +43,9 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
         const txReceipt = await tx.wait(1)
         subscriptionId = txReceipt.events[0].args.subId
         await vrfCoordinatorV2Mock.fundSubscription(subscriptionId, FUND_AMOUNT)
+        await vrfCoordinatorV2Mock.addConsumer(subscriptionId, randomIpfsNft.address)
     } else {
-        vrfCoordinatorV2Address = networkConfig[chainId].vrfCoorinator
+        vrfCoordinatorV2Address = networkConfig[chainId].vrfCoordinator
         subscriptionId = networkConfig[chainId].subscriptionId
     }
 
@@ -64,7 +65,6 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
         log: true,
         waitConfirmations: network.config.blockConfirmations || 1,
     })
-    await vrfCoordinatorV2Mock.addConsumer(subscriptionId, randomIpfsNft.address)
 
     log("-----------------------------------------------------------")
 

@@ -23,7 +23,7 @@ module.exports = async function ({ getNamedAccounts }) {
             resolve()
         })
         const randomIpfsNftTx = await randomIpfsNft.requestNft({ value: mintFee })
-        
+
         const randomIpfsNftTxReceipt = await randomIpfsNftTx.wait(1)
         if (developmentChains.includes(network.name)) {
             const requestId = randomIpfsNftTxReceipt.events[1].args.requestId.toString()
@@ -42,3 +42,5 @@ module.exports = async function ({ getNamedAccounts }) {
     await dynamicSvgNftTx.wait(1)
     console.log(`Basic NFT index 0 tokenURI: ${await dynamicSvgNft.tokenURI(0)}`)
 }
+
+module.exports.tags = ["all", "mint"]
